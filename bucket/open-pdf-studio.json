@@ -9,13 +9,19 @@
             "hash": "b5c6ad6c49f792a1ef1cfa0be9a81b40bccf088a215ef428e8540074a5e80a32"
         }
     },
-    "innosetup": true,
-    "shortcuts": [
-        [
-            "Open PDF Studio.exe",
-            "Open PDF Studio"
+    "installer": {
+        "script": [
+            "Start-Process \"$dir\\Open.PDF.Studio_2.3.0_x64_user-setup.exe\" -ArgumentList '/S' -Wait"
         ]
-    ],
+    },
+    "uninstaller": {
+        "script": [
+            "Get-ChildItem \"$env:LOCALAPPDATA\\Programs\" -Filter '*Open*PDF*Studio*' -Directory | ForEach-Object {",
+            "    $uninstaller = Join-Path $_.FullName 'Uninstall Open PDF Studio.exe'",
+            "    if (Test-Path $uninstaller) { Start-Process $uninstaller -ArgumentList '/S' -Wait }",
+            "}"
+        ]
+    },
     "checkver": {
         "github": "https://github.com/OpenAEC-Foundation/open-pdf-studio"
     },
