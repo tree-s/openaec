@@ -5,30 +5,38 @@
     "license": "LGPL-3.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/OpenAEC-Foundation/open-pdf-studio/releases/download/v2.3.0/Open.PDF.Studio_2.3.0_x64_user-setup.exe",
-            "hash": "b5c6ad6c49f792a1ef1cfa0be9a81b40bccf088a215ef428e8540074a5e80a32"
+            "url": "https://github.com/OpenAEC-Foundation/open-pdf-studio/releases/download/v2.3.0/Open.PDF.Studio_2.3.0_x64-setup.exe",
+            "hash": "78d0533cfc030cf36c035ed53349cbee8a220f6cc23c664eabb2e99171985b74"
         }
     },
     "installer": {
         "script": [
-            "Start-Process \"$dir\\Open.PDF.Studio_2.3.0_x64_user-setup.exe\" -ArgumentList '/S' -Wait"
+            "$installer = \"$dir\\Open.PDF.Studio_2.3.0_x64-setup.exe\"",
+            "Start-Process $installer -ArgumentList \"/S /D=$dir\" -Wait",
+            "Remove-Item $installer -Force"
         ]
     },
     "uninstaller": {
         "script": [
-            "Get-ChildItem \"$env:LOCALAPPDATA\\Programs\" -Filter '*Open*PDF*Studio*' -Directory | ForEach-Object {",
-            "    $uninstaller = Join-Path $_.FullName 'Uninstall Open PDF Studio.exe'",
-            "    if (Test-Path $uninstaller) { Start-Process $uninstaller -ArgumentList '/S' -Wait }",
+            "$uninstaller = \"$dir\\Uninstall Open PDF Studio.exe\"",
+            "if (Test-Path $uninstaller) {",
+            "    Start-Process $uninstaller -ArgumentList '/S' -Wait",
             "}"
         ]
     },
+    "shortcuts": [
+        [
+            "Open PDF Studio.exe",
+            "Open PDF Studio"
+        ]
+    ],
     "checkver": {
         "github": "https://github.com/OpenAEC-Foundation/open-pdf-studio"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/OpenAEC-Foundation/open-pdf-studio/releases/download/v$version/Open.PDF.Studio_$version_x64_user-setup.exe"
+                "url": "https://github.com/OpenAEC-Foundation/open-pdf-studio/releases/download/v$version/Open.PDF.Studio_$version_x64-setup.exe"
             }
         }
     }
