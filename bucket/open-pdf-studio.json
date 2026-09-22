@@ -11,7 +11,7 @@
     },
     "installer": {
         "script": [
-            "$installer = \"$dir\\Open.PDF.Studio_$version_x64-setup.exe\"",
+            "$installer = \"$dir\\Open.PDF.Studio_$version`_x64-setup.exe\"",
             "Start-Process $installer -ArgumentList \"/S /D=$dir\" -Wait",
             "Remove-Item $installer -Force"
         ]
