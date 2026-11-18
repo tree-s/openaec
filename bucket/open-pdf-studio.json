@@ -1,12 +1,12 @@
 {
-    "version": "2026.47.0",
+    "version": "2026.47.1",
     "description": "Free, open-source PDF editor and annotator",
     "homepage": "https://github.com/OpenAEC-Foundation/open-pdf-studio",
     "license": "LGPL-3.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/OpenAEC-Foundation/open-pdf-studio/releases/download/v2026.47.0/Open.PDF.Studio_2026.47.0_x64-setup.exe",
-            "hash": "8622f61afc15b8c25ce8b68408bff59f3987eace3776833d4130f991427caf7d"
+            "url": "https://github.com/OpenAEC-Foundation/open-pdf-studio/releases/download/v2026.47.1/Open.PDF.Studio_2026.47.1_x64-setup.exe",
+            "hash": "abfa7289e9c342a0c8d6ea6ff201021f0adea2d1bbee21eb7562788aab858ecb"
         }
     },
     "installer": {
